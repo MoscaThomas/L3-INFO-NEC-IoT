@@ -1,3 +1,5 @@
+package main.java;
+
 import java.util.Random;
 
 import com.rabbitmq.client.Channel;
@@ -14,17 +16,19 @@ public class Producer {
 		factory.setHost("localhost");
 		try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
 			channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
-
-			while(1){
+			Double prix = 45000.0;
+			while(true){
 				Random random = new Random();
-				Int randomNumber = random.nextInt(101) + 50;
-				String message = randomNumber;
+				Double n = random.nextDouble(21) - 10;
+				prix = prix * n / 100;
+				String message = "% modif : " + n + " prix : " + prix;
+				
 				System.out.println("Routing key : " + ROUTING_KEY + " ; message : " + message);
 
 				channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, null, message.getBytes("UTF-8"));
 				System.out.println(" [x] Sent '" + message + "'");
 
-				sleep(5);
+				Thread.sleep(5);
 			}
 
 
