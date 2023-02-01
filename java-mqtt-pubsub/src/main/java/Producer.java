@@ -1,5 +1,4 @@
-package main.java;
-
+import java.text.DecimalFormat;
 import java.util.Random;
 
 import com.rabbitmq.client.Channel;
@@ -19,16 +18,18 @@ public class Producer {
 			Double prix = 45000.0;
 			while(true){
 				Random random = new Random();
-				double n = (random.nextDouble() * 20) - 10;
-				prix = prix * n / 100;
-				String message = "% modif : " + n + " prix : " + prix;
-				
-				System.out.println("Routing key : " + ROUTING_KEY + " ; message : " + message);
+				double n = (random.nextDouble() * 20.0) - 10.0;
+				prix = prix * (1 + n / 100);
+				DecimalFormat decimalFormat = new DecimalFormat("#0.0");
+				// On prépare le message que l'on envoie
+				String message = "% modif : " + decimalFormat.format(n) + " ||| prix : " + decimalFormat.format(prix) + "\n";
 
 				channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, null, message.getBytes("UTF-8"));
+				
+				// Confirmation de l'envoi
 				System.out.println(" [x] Sent '" + message + "'");
 
-				Thread.sleep(5);
+				Thread.sleep(5000);
 			}
 
 

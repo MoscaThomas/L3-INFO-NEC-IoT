@@ -1,5 +1,3 @@
-package main.java;
-
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -23,7 +21,7 @@ public class Consumer {
 
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 			String message = new String(delivery.getBody(), "UTF-8");
-			System.out.println(" [x] Received '" + delivery.getEnvelope().getRoutingKey() + "':'" + message + "'");
+			System.out.println(" [x] Received '" + message + "'\n");
 		};
 
 		channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
