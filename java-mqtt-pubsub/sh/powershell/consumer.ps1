@@ -1,4 +1,3 @@
-#!/bin/bash
 $WORKDING_DIR = pwd
 $CURRENT_DIR = $(split-path $(pwd) -leaf)
 

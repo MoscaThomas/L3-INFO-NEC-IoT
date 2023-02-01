@@ -19,7 +19,7 @@ public class Producer {
 			Double prix = 45000.0;
 			while(true){
 				Random random = new Random();
-				Double n = random.nextDouble(21) - 10;
+				double n = (random.nextDouble() * 20) - 10;
 				prix = prix * n / 100;
 				String message = "% modif : " + n + " prix : " + prix;
 				
