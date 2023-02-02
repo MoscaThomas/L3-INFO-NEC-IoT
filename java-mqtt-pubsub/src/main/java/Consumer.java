@@ -8,6 +8,8 @@ public class Consumer {
 	private static final String EXCHANGE_NAME = "logs";
 
 	public static void main(String[] argv) throws Exception {
+		Message objMessage;
+
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost("localhost");
 		Connection connection = factory.newConnection();
@@ -22,6 +24,9 @@ public class Consumer {
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 			String message = new String(delivery.getBody(), "UTF-8");
 			System.out.println(" [x] Received '" + message + "'\n");
+			objMessage = new Message(message);
+			double prix = objMessage.getPrix();
+			double pourcentage = objMessage.getPourcentage();
 		};
 
 		channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
