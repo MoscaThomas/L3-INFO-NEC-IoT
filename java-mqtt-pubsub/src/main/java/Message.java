@@ -10,22 +10,29 @@ public class Message {
     }
     
     public Double getPrix() {
-        String[] parts = message.split(" ||| ");
-        for (String part : parts) {
-            if (part.startsWith("prix : ")) {
-                return Double.parseDouble(part.substring(7));
-            }
+        String[] elements = this.message.split("\\|\\|\\|");
+
+        for (String element : elements) {
+          if (element.trim().startsWith("prix :")) {
+            String prixString = element.trim().split("prix :")[1].trim();
+            return Double.parseDouble(prixString);
+          }
         }
-        return null;
-    }
+      
+        return 0.0;
+      }
+    
     
     public Double getPourcentage(){
-        String[] parts = message.split(" ||| ");
-    for (String part : parts) {
-        if (part.startsWith("% modif : ")) {
-            return Double.parseDouble(part.substring(10));
+        String[] elements = message.split("\\|\\|\\|");
+
+        for (String element : elements) {
+          if (element.trim().startsWith("% modif :")) {
+            String percentageString = element.trim().split("% modif : ")[1].trim();
+            return Double.parseDouble(percentageString);
+          }
         }
-    }
-    return null;
-    }
+      
+        return 0.0;
+      }
 }

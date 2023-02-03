@@ -1,3 +1,4 @@
+import main.java.Message;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -8,7 +9,6 @@ public class Consumer {
 	private static final String EXCHANGE_NAME = "logs";
 
 	public static void main(String[] argv) throws Exception {
-		Message objMessage;
 
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost("localhost");
@@ -23,11 +23,20 @@ public class Consumer {
 
 		DeliverCallback deliverCallback = (consumerTag, delivery) -> {
 			String message = new String(delivery.getBody(), "UTF-8");
+			Message objMessage = new Message(message);
+
 			System.out.println(" [x] Received '" + message + "'\n");
-			objMessage = new Message(message);
-			double prix = objMessage.getPrix();
-			double pourcentage = objMessage.getPourcentage();
+
+			Double prix = objMessage.getPrix();
+			Double pourcentage = objMessage.getPourcentage();
+
+			System.out.println(" Prix : "+ prix + "\n");
+			System.out.println(" Pourcentage : "+ pourcentage + " %\n");
+
+			//System.out.println(" [x] Received '" + prix + "'\n");
+			//System.out.println(" [x] Received '" + pourcentage +"'\n");
 		};
+
 
 		channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
 		});

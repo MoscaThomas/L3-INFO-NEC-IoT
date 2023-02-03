@@ -22,7 +22,7 @@ public class Producer {
 				prix = prix * (1 + n / 100);
 				DecimalFormat decimalFormat = new DecimalFormat("#0.0");
 				// On prépare le message que l'on envoie
-				String message = "% modif : " + decimalFormat.format(n) + " ||| prix : " + decimalFormat.format(prix) + "\n";
+				String message = "% modif : " + decimalFormat.format(n) + "||| prix : " + decimalFormat.format(prix) + "\n";
 
 				channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, null, message.getBytes("UTF-8"));
 				
