@@ -12,7 +12,7 @@ public class Producer {
 
 	public static void main(String[] argv) throws Exception {
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("localhost");
+		factory.setHost("52.47.79.56");
 		try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
 			channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
 			Double prix = 45000.0;
