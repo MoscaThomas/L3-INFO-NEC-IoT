@@ -17,6 +17,7 @@ public class FluctuationDao {
 	private static FluctuationDao fluctuationDao;
 	private Connection conn;
 	private static List<Fluctuation> fluctuations = new ArrayList<Fluctuation>();
+	private static Fluctuation uneFluctuation;
 
 	/*
 	private static final List<Fluctuation> fluctuations = Stream.of(
@@ -38,7 +39,7 @@ public class FluctuationDao {
 		return null;//Fluctuations.stream().filter(Fluctuation -> Fluctuation.getName().equals(name)).findAny().orElse(null);
 	}
 
-	public List<Fluctuation> getAll() {
+	public List<Fluctuation> getLast() {
 		/*
 		System.out.println("avant connection");
 		try{
@@ -63,7 +64,7 @@ public class FluctuationDao {
 		}
 		*/
 		
-		return fluctuations;
+		return uneFluctuation;
 		
 	}
 
