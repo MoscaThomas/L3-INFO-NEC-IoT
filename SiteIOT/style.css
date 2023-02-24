@@ -1,0 +1,28 @@
+.rectangle{
+    width: 95%;
+    height: 110%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+    background-color: #1B8C87;
+    border-color: 1px solid black;
+
+    border-radius: 15px;
+}
+.graph{
+    height: 90%;
+    width: 90%;
+    border-radius: 20px;
+    background-color: #5EC2BC;
+    border-color: 1px solid black;
+    margin:2%;
+}
+body{
+    background-color:#C0FCF7 ;
+    border-color: 1px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
