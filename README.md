@@ -1,4 +1,3 @@
-# java-mqtt-pubsub
 
 ## Requirements
 [Docker](https://www.docker.com/)
