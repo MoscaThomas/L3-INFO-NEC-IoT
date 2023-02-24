@@ -13,11 +13,7 @@
     <div class="graph">
 
         <canvas id="myChart"></canvas>
-        <script>
-            fetch('http://localhost:8085/api-rest/api/Fluctuations/')
-            .then((response)=>response.json())
-            .then((data)=>console.log(data));
-        </script>
+
         <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -28,16 +24,16 @@
                     label: 'Prix',
                     data: [],
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderColor: '0',
                     borderWidth: 2
                 }]
             },
 
         });
-/*
+
         function getData() {
             $.ajax({
-                url: 'data.php', // chemin du script PHP qui va récupérer les données
+                url: './data.php', // chemin du script PHP qui va récupérer les données
                 method:'GET',
                 
                 success: function(response) {
@@ -51,7 +47,7 @@
         }
 
         setInterval(getData, 5000);
-        */
+
     </script>
     </div>
 </div>
