@@ -1,0 +1,18 @@
+.rectangle{
+    width: 95%;
+    height: 110%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+    background-color: red;
+}
+.graph{
+    height: 90%;
+    width: 90%;
+    background-color: yellow;
+    margin:2%;
+}
+body{
+    background-color:green ;
+}
