@@ -1,0 +1,54 @@
+services:
+  mysql:
+    image: mysql:8.0.27
+    ports:
+      - '3306:3306'
+      - '33060:33060'
+    volumes:
+      - IOT-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - IOT
+
+  broker:
+    image: rabbitmq:3.11.6-management-alpine
+    hostname: java-mqtt-pubsub-broker
+    ports:
+      - '5672:5672'
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "5672"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      IOT:
+        aliases:
+        - java-mqtt-pubsub-broker
+  
+  consumer:
+    image: openjdk:11
+    command: /bin/bash -c "java -cp /app/app-jar-with-dependencies.jar Consumer"
+    working_dir: /app
+    volumes:
+      - ./java-mqtt-pubsub/app:/app
+    depends_on:
+      mysql:
+        condition: service_healthy
+      broker:
+        condition: service_healthy
+    networks:
+      - IOT
+
+
+volumes:
+  IOT-data:
+
+networks:
+  IOT: {}

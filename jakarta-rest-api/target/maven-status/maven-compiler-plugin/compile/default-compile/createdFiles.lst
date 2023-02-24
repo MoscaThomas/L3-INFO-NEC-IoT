@@ -1,0 +1,8 @@
+ConsumerMqtt.class
+business/FluctuationBusiness.class
+dao/Message.class
+RestApplication.class
+resource/FluctuationServices.class
+dao/FluctuationDao.class
+dao/GestionConnexion.class
+entities/Fluctuation.class

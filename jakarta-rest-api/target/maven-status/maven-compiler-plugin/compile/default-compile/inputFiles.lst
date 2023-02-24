@@ -1,0 +1,8 @@
+/opt/maven/src/main/java/dao/ConsumerMqtt.java
+/opt/maven/src/main/java/dao/GestionConnexion.java
+/opt/maven/src/main/java/business/FluctuationBusiness.java
+/opt/maven/src/main/java/dao/Message.java
+/opt/maven/src/main/java/dao/FluctuationDao.java
+/opt/maven/src/main/java/RestApplication.java
+/opt/maven/src/main/java/services/FluctuationServices.java
+/opt/maven/src/main/java/entities/Fluctuation.java

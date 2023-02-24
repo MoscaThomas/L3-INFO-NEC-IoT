@@ -1,0 +1,13 @@
+#!/bin/bash
+if [ ! "$(command -v docker)" ]; then
+    echo "docker could not be found"
+    exit 0
+fi
+
+CURRENT_DIR=$(basename $(pwd))
+
+docker run -d --rm -it \
+    --name "$CURRENT_DIR-broker" \
+    -p 15672:15672 -p 5672:5672  \
+    --net host \
+    rabbitmq:3.11.6-management-alpine
