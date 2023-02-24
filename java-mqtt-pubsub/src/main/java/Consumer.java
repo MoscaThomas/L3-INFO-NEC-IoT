@@ -4,6 +4,8 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
+import main.java.DatabaseManagement;
+
 public class Consumer {
 
 	private static final String EXCHANGE_NAME = "logs";
@@ -11,7 +13,7 @@ public class Consumer {
 	public static void main(String[] argv) throws Exception {
 
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("localhost");
+		factory.setHost("java-mqtt-pubsub-broker");
 		Connection connection = factory.newConnection();
 		Channel channel = connection.createChannel();
 
@@ -32,6 +34,9 @@ public class Consumer {
 
 			System.out.println(" Prix : "+ prix + "\n");
 			System.out.println(" Pourcentage : "+ pourcentage + " %\n");
+
+			System.out.println("resultat de l'insertion: " + DatabaseManagement.insert(pourcentage, prix));
+
 
 			//System.out.println(" [x] Received '" + prix + "'\n");
 			//System.out.println(" [x] Received '" + pourcentage +"'\n");

@@ -6,7 +6,7 @@ $CONTAINER_RUNTIME_NAME="$CURRENT_DIR-openjdk-11-pubsub-consumer"
 
 docker run -d -it --rm `
     -v $WORKDING_DIR/app:/app `
-    --net host `
+    --network IOT `
     --name $CONTAINER_RUNTIME_NAME `
     openjdk:11
 
