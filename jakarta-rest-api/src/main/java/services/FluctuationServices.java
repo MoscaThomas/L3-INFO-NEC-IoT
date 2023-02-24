@@ -36,6 +36,13 @@ public class FluctuationServices {
 	}
 
 	@GET
+	@Path("last")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getLast() {
+		return Response.ok(FluctuationBusiness.getLast()).build();
+	}
+
+	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getFluctuation(@PathParam("id") long id) {

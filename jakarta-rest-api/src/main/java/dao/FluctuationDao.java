@@ -27,7 +27,7 @@ public class FluctuationDao {
 */
 
 	public static void addFluctuation(double prix, double modif){
-		Fluctuation uneFluctuation = new Fluctuation(prix, modif);
+		uneFluctuation = new Fluctuation(prix, modif);
 		fluctuations.add(uneFluctuation);
 	}
 
@@ -39,7 +39,7 @@ public class FluctuationDao {
 		return null;//Fluctuations.stream().filter(Fluctuation -> Fluctuation.getName().equals(name)).findAny().orElse(null);
 	}
 
-	public List<Fluctuation> getLast() {
+	public Fluctuation getLast() {
 		/*
 		System.out.println("avant connection");
 		try{

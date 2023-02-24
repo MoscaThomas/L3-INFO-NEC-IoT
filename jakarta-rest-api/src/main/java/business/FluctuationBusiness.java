@@ -38,4 +38,8 @@ public class FluctuationBusiness {
 		return fluctuationDao.getByName(name);
 	}
 
+	public Fluctuation getLast() {
+		return fluctuationDao.getLast();
+	}
+
 }
