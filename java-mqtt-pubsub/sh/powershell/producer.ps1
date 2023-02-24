@@ -6,8 +6,8 @@ $CONTAINER_RUNTIME_NAME="$CURRENT_DIR-openjdk-11-pubsub-producer"
 
 docker run -d -it --rm `
     -v $WORKDING_DIR/app:/app `
-    --network IOT `
     --name $CONTAINER_RUNTIME_NAME `
+    --network IOT `
     -e broker_host=java-mqtt-pubsub-broker `
     openjdk:11
 
